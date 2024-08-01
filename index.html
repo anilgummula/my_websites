@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project</title>
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+      function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+      }
+
+      window.onload = function() {
+          const error = getQueryParam('error');
+          if (error) {
+              let vpopup = document.querySelector('#vpopup');
+              let vclose = document.querySelector('.vclose');
+              vpopup.style.display = 'flex';
+              
+              vclose.addEventListener('click', function() {
+                  vpopup.style.display = 'none';
+                  
+                  const url = new URL(window.location);
+                  url.searchParams.delete('error');
+                  history.replaceState(null, '', url);
+                  
+                  var popup1 = document.getElementById('lpopup');
+                  popup1.style.display='flex';
+              });
+          }
+      }
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* background-image: url("../images/5172658.jpg"); */
+  /* background-image: url("../images/1-sports-car-futuristic.jpg"); */
+  /* background-image: url("./images/simon-berger-twukN12EN7c-unsplash.jpg"); */
+  background-image: url("../images/2-sea-full-moon.jpg");
+  background-image: url("../images/nasa-Q1p7bh3SHj8-unsplash.jpg");
+  background-image: url("../images/codioful-formerly-gradienta-l7pbhh64CIk-unsplash.jpg");
+  background-image: url("./images/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg");
+  background-image: url("./images/images\ \(1\).jpg");
+  background-image: url("./images/aqua-d9b59c89.png");
+  /* background: #ffff;
+  background: #363535;
+  background: grey; */
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* dark mode css */
+body.dark-mode {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+body.dark-mode .nav {
+    background: rgba(34, 34, 34, 0.7);
+}
+
+body.dark-mode .nav a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .nav a:hover {
+    color: #34d3ef;
+}
+
+
+/* nav bar css */
+.nav {
+  padding-top: 0;
+  z-index: 4;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 460px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(254, 212, 44, 0.3);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+
+.nav img {
+  width: 4rem;
+  height: 4rem;
+  border: 2px black solid;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 10px;
+}
+
+.nav a {
+  list-style: none;
+  margin: 0 12px;
+  position: relative;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 6px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav a:hover {
+  color: #ff4d00;
+}
+/* end of nav bar css */
+
+
+
+/* container css */
+.container, #con, .newcontainer {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+.container .cards {
+  position: relative;
+  height: 20rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 0.75rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 4%;
+  background: rgba(255, 255, 255, 0.014);
+  backdrop-filter: blur(5px);
+  transition: width 0.5s;
+}
+
+.cards:hover {
+  width: 15.3rem;
+  transition: width 0.5s;
+}
+
+img {
+  width: 5rem;
+  height: 5.5rem;
+}
+
+.img {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 10%;
+  border: 2px black solid;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* new cards button css */
+.btnnew {
+  display: flex;
+  width: 9rem;
+  box-shadow: 0 5px 5px 0 rgba(255, 255, 255, 0.11);
+  border: none;
+  margin: auto;
+  padding: 8px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.btnnew:hover {
+  color: #ff4d00;
+}
+
+
+/* popup css */
+
+
+ .popup,#cpopup,#wpopup,#vpopup{
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+ }
+
+
+.contactdetails, .warndetails,.wrongdetails {
+  padding: 40px;
+}
+
+.pop-content {
+  display: flex;
+  position: relative;
+  /* margin: auto; */
+  /* width: 400px; */
+  width: 100%;
+  /* height: 440px; */
+  margin-top: 60px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.14);
+  border: 2px black solid;
+  
+}
+
+.formpage, .contactdetails, .warndetails,.wrongdetails {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  /* height: 440px; */
+  border: 2px black solid;
+  background: rgba(0, 183, 255, 0.559);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  z-index: 2;
+  padding: 40px;
+  overflow: hidden;
+}
+.formpage h2{
+  font-size: 2em;
+  color: #162938;
+  text-align: center;
+}
+
+/* for label and form input */
+.finput{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid black;
+  margin: 30px 0;
+
+}
+.finput label{
+  position:absolute;
+  top:50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+.finput input:focus~label{
+  top: -5px;
+}
+.finput input:valid~label{
+  top: -5px;
+}
+.finput input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 30px 0 5px;
+}
+
+/* login end */
+/* for register */
+.finput1{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid black;
+  margin: 20px 0;
+
+}
+.finput1 label{
+  position:absolute;
+  /* background: transparent; */
+  top:50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.finput1 input:focus~label{
+  top: -5px;
+}
+
+.finput1 input:valid~label{
+  top: -5px;
+}
+
+.finput1 input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 30px 0 5px;
+
+}
+
+/* cancel btn  */
+.cancelbtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 45px;
+  width: 45px;
+  background:#162938 ;
+  font-size: 2em;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+
+/* reg end */
+
+.showpass{
+  margin: 0;
+  padding: 0;
+}
+
+
+#warn,#warn2 {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  justify-content: center;
+  font-size: small;
+}
+
+label {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-size: 20px; */
+}
+
+.logbtn,.regbtn{
+  width: 100%;
+  height: 45px;
+  background:#162839;
+  color: #ffff;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+#reg2,#login2{
+  text-decoration: none;
+}
+#login2:hover{
+  text-decoration: underline;
+  color: #ffff;
+}
+#reg2:hover{
+  text-decoration: underline;
+  color: #ffff;
+}
+
+
+
+/* job portals */
+/* .jobportals{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  background: #f8f9fa;
+  backdrop-filter: blur(2px);
+} */
+/* #job1{
+  display: flex;
+  background: #ffffff;
+  width: 500px;
+  height: 200px;
+  margin: auto;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 20px;
+  z-index: 2;
+  box-shadow:  0 8px 8px 0 rgba(0, 0, 0, 0.05);
+} */
+
+
+/* by chatgpt */
+
+.jobportals{
+  margin:0 ;
+  padding:0 ;
+  width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(229, 228, 223, 0.3);
+  /* background: #282c2d4d; */
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  z-index: 4;
+}
+.jobportals h1{
+  display: flex;
+  justify-content: center;
+}
+.job-post {
+  /* border: 1px solid #ddd; */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  /* background: rgba(254, 212, 44, 0.3); */
+  /* background: #856b014d; */
+  /* background: #ffffffb5; */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+
+}
+.job-post h2 {
+  margin-top: 0;
+}
+.job-post p {
+  margin: 5px 0;
+}
+.job-post a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.job-post a:hover {
+  background-color: #005bb5;
+}
+
+
+
+
+
+  </style>
+  </head>
+  <body>
+    <!-- <script src="./script.js"></script> -->
+    <!-- main element start -->
+    <div class="main">
+      <!-- nav bar start -->
+      <div class="nav">
+        <img src="./images/img1.png" alt="" />
+       
+        <a style="cursor: pointer;" id="login">Login</a>
+        <h4 style="cursor: pointer;" id="0">/</h4>
+        <a style="cursor: pointer;" id="reg">Register</a>
+        
+        <a href="#" id="contact2">Contact Us</a>
+      </div>
+      <!-- nav bar end -->
+
+      <!-- new card btn -->
+      
+      <!-- <button id="btnone1" class="btnnew" type="button">+&nbsp;&nbsp;New Card</button> -->
+      <!-- <button id="btnone1" class="btnnew" type="button">Apply for a Job</button> -->
+     
+      <div class="container" id="con1">
+        
+        <!-- <div id="card1" class="cards">
+          <div class="content">
+            <a href="./images/img1.png">
+              <div class="img">
+                <img src="./images/img1.png" alt="image" />
+              </div>
+            </a>
+            <h2>01</h2>
+            <h3>Card One</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+              non aspernatur ipsum sint repudiandae ex.
+            </p>
+          </div>
+        </div> -->
+        
+      </div>
+      <!-- cards div end -->
+      <!-- container div end -->
+
+      <div class="jobportals">
+          <h1>Job Portals</h1>
+        <div class="job-post">
+            <h2>Software Engineer at ABC Corp</h2>
+            <p>Location: New York, NY</p>
+            <p>Experience: 2-4 years</p>
+            <p>Skills: Java, Spring, Hibernate</p>
+            <a href="#" class="apply0" onclick="warn()">Apply Now</a>
+        </div>
+        
+        <div class="job-post">
+            <h2>Data Analyst at XYZ Ltd</h2>
+            <p>Location: San Francisco, CA</p>
+            <p>Experience: 1-3 years</p>
+            <p>Skills: SQL, Python, Data Visualization</p>
+            <a href="#" class="apply0" onclick="warn()">Apply Now</a>
+        </div>
+        <div class="job-post">
+            <h2>Data Analyst at XYZ Ltd</h2>
+            <p>Location: San Francisco, CA</p>
+            <p>Experience: 1-3 years</p>
+            <p>Skills: SQL, Python, Data Visualization</p>
+            <a href="#" class="apply0" onclick="warn()">Apply Now</a>
+        </div>
+        <div class="job-post">
+            <h2>Data Analyst at XYZ Ltd</h2>
+            <p>Location: San Francisco, CA</p>
+            <p>Experience: 1-3 years</p>
+            <p>Skills: SQL, Python, Data Visualization</p>
+            <a href="#" class="apply0" onclick="warn()">Apply Now</a>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+
+
+    </div>
+  <!-- main div end -->
+
+    <!-- popup registration page -->
+    <div id="rpopup" class="popup">
+      <div class="popup-content" id="main">
+        <div class="formpage">
+          <form  method="post" class="myform" id="myform1">
+
+              <span class="cancelbtn">
+                <ion-icon id="rclose" name="close"></ion-icon> 
+              </span>
+
+              <h2>SignUp</h2>
+           
+            <div class="finput1">
+              <input
+              type="text"
+              id="name"
+              class="input"
+              name="uname" 
+              required
+              />
+              <label for="name">Name</label>
+            </div>
+
+            <div class="finput1">
+            <input
+            type="text"
+            id="email"
+            name="email"
+            class="input"
+            required
+            />
+            <label for="email">Email</label>
+            </div>
+
+            <div class="finput1">
+            <input
+            type="password"
+            id="pwd"
+            name="pwd"
+            class="input"
+            required
+            />
+            <label for="pwd">Password</label>
+          </div>
+          
+          <div class="showpass">
+            <label for="showpass"><input type="checkbox" onclick="show()" />&nbsp;show password</label>
+          </div>
+
+          <div class="finput1">
+          <input
+          type="password"
+          id="cpwd"
+          class="input"
+          required
+          />
+          <label for="pwd">Confirm password</label>
+          </div>
+
+          <!-- <br /> -->
+          <p id="warn"></p>
+          <br />
+          <button type="button" class="regbtn" id="submitbtn" onclick="f1()" value="submit">SignUp</button>
+          
+          &nbsp;
+          <p>Already have an account? <a href="" id="login2">Login</a> </p>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup page end -->
+
+    <!-- popup LoginPage -->
+    <div id="lpopup" class="popup">
+      <div class="popup-content" id="main">
+        <div class="formpage">
+
+          <form  method="post" class="myform" id="myform2">
+            <span class="cancelbtn">
+              <ion-icon name="close" id="lclose"></ion-icon> 
+            </span>
+            <h2>Login</h2>
+
+            <div class="finput">
+            <input
+            type="text"
+            id="name2"
+            class="input"
+            name="uname"
+            required
+            />
+            <label for="name">Username</label>
+            </div>
+
+
+            <div class="finput">
+            <input
+            type="password"
+            id="pwd2"
+            class="input"
+            name="pwd"
+            required
+            />
+            <label for="pwd">Password</label>
+            </div>
+
+
+            <div class="showpass">
+              <label for="showpass"><input type="checkbox" onclick="show2()" />show password</label>
+            </div>
+            <br>
+            <p id="warn2"></p>
+            <br>
+            <button type="button" class="logbtn" id="submitbtn"  onclick="f2()">
+              Login
+            </button>
+            &nbsp;
+            <p>Don't have an account? <a href="" id="reg2">Register</a> </p>
+          
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup LoginPage  end-->
+
+    <!-- contact popup -->
+    <div id="cpopup">
+      <div class="contactdetails" style="max-width: 500px;">
+        <span class="cancelbtn">
+          <ion-icon class="cclose" name="close"></ion-icon> 
+        </span>
+        <h3>Email:anilstark2050@gmail.com</h3>
+      </div>
+    </div>
+
+    <!-- warn popup -->
+    <div id="wpopup">
+      <div class="warndetails" style="max-width: 500px;">
+        <span class="cancelbtn">
+          <ion-icon class="wclose" name="close"></ion-icon> 
+        </span>
+        <h3>SignUp/Login before applying for a job!!</h3>
+      </div>
+    </div>
+
+    <!-- invalid user popup -->
+    <div id="vpopup">
+      <div class="wrongdetails" style="max-width: 500px;">
+        <span class="cancelbtn">
+          <ion-icon class="vclose" name="close"></ion-icon> 
+        </span>
+        <h3>Invalid Details</h3>
+        <!-- <p>Don't have an account? <a href="" id="reg2">Register</a> </p> -->
+      </div>
+    </div>
+
+
+    <script src="myscript.js"></script>
+
+  </body>
+</html>
