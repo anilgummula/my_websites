@@ -499,6 +499,199 @@ label {
 
 
   </style>
+    <script>
+      // popup js
+document.addEventListener("DOMContentLoaded", function() {
+    var popupBtn2 = document.querySelector('#reg');
+    var popupBtn1 = document.querySelector('#login');
+    var loginagain = document.querySelector('#login2');
+    var regagain = document.querySelector('#reg2');
+    var popup1 = document.getElementById('lpopup');
+    var popup2 = document.getElementById('rpopup');
+    var closeBtn = document.querySelector('#lclose');
+    var closeBtn2 = document.querySelector('#rclose');
+
+    popupBtn1.addEventListener('click', function() {
+        popup1.style.display = 'flex';
+        // login
+    });
+    popupBtn2.addEventListener('click', function() {
+        popup2.style.display = 'flex';
+        // register
+    });
+
+    closeBtn.addEventListener('click', function() {
+        popup1.style.display = 'none';
+        window.refresh();
+    });
+    closeBtn2.addEventListener('click', function() {
+        popup2.style.display = 'none';
+        window.refresh();
+    });
+    loginagain.addEventListener('click',function(e){
+        e.preventDefault();
+        // form.reset();
+        popup2.style.display = 'none';
+        popup1.style.display = 'flex';
+    });
+    regagain.addEventListener('click',function(e){
+        e.preventDefault();
+        // form.reset();
+        popup1.style.display = 'none';
+        popup2.style.display = 'flex';
+    });
+   
+});
+// popup end
+
+
+
+
+// for reg page
+function f1(){
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let pass=document.getElementById("pwd").value;
+    let repass=document.getElementById("cpwd").value;
+
+    if(name!=0&&email!=0){
+
+        if(pass==repass && pass!=0){
+            let form=document.querySelector('#myform1');
+            form.action = 'reg.jsp';
+            form.submit();
+        }
+        else{
+            if(pass==0){
+                document.getElementById("warn").innerHTML="<p>*password should not be empty</p>";
+            }
+            else{
+                document.getElementById("warn").innerHTML="<p style=color: red>*password don't match</p>";
+            }
+        }
+
+    }
+    else{
+        document.getElementById("warn").innerHTML="<p style=color: red>*Name and Email fields should not be empty</p>";
+    }
+}
+
+// for login verfiy
+function f2(){
+    let name=document.getElementById("name2").value;
+    let pass=document.getElementById("pwd2").value;
+
+
+    if(name!=0 && pass!=0){
+        let form=document.querySelector('#myform2');
+        form.action = 'login.jsp';
+        form.submit();
+    }
+    else{
+        if(pass==0){
+            document.getElementById("warn2").innerHTML="<p>*password should not be empty</p>";
+        }
+        if(name==0){
+            document.getElementById("warn2").innerHTML="<p>*name should not be empty</p>";
+        }
+    }
+}
+
+
+// to show password
+function show(){
+    var c=document.getElementById("pwd");
+    var c2=document.getElementById("cpwd");
+    if(c.type==="password"){
+        c.type="text";
+        if(c2!=0){
+            c2.type="text";
+        }
+    }
+    else{
+
+        c.type="password";
+        if(c2!=0){
+            c2.type="password";
+        }
+    }
+}
+
+// to show password for login form
+function show2(){
+    var c=document.getElementById("pwd2");
+    if(c.type==="password"){
+        c.type="text";
+    }
+    else{
+        c.type="password";
+    }
+}
+//to refresh page
+function refresh(){
+    location.reload(true);
+}
+
+
+
+
+let contactus=document.querySelector("#contact2");
+let cpopup=document.querySelector('#cpopup');
+var closeBtn = document.querySelector('.cclose');
+// cpopup.style.display = 'flex';
+
+
+contactus.addEventListener('click', function() {
+    cpopup.style.display = 'flex';
+    // login
+});
+
+
+closeBtn.addEventListener('click', function() {
+    cpopup.style.display = 'none';
+    window.refresh();
+});
+
+
+
+
+// warning popup
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log("DOM fully loaded and parsed");
+//     let btn = document.querySelector('.apply0');
+//     let wpopup = document.querySelector('#wpopup');
+//     let wclose = document.querySelector('.wclose');
+//     // let container = document.querySelector('#con1');
+  
+//     btn.addEventListener('click', function() {
+//         console.log("Button clicked");
+//         wpopup.style.display='flex';
+//     });
+//     wclose.addEventListener('click',function(){
+//         wpopup.style.display='none';
+//         window.refresh();
+
+//     });
+// });
+
+// OR
+function warn(){
+    let wpopup = document.querySelector('#wpopup');
+    let wclose = document.querySelector('.wclose');
+    console.log("Button clicked");
+    wpopup.style.display='flex';
+    wclose.addEventListener('click',function(){
+        wpopup.style.display='none';
+        window.refresh();
+
+    });
+
+}
+
+
+// invalid user details
+
+    </script>
   </head>
   <body>
     <!-- <script src="./script.js"></script> -->
