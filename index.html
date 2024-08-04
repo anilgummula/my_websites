@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project</title>
-    <link rel="stylesheet" href="./stylesheet.css" />
+    <!-- <link rel="stylesheet" href="./stylesheet.css" /> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
@@ -33,9 +33,204 @@
           }
       }
   </script>
+  <script>
+    // popup js
+document.addEventListener("DOMContentLoaded", function() {
+    var popupBtn2 = document.querySelector('#reg');
+    var popupBtn1 = document.querySelector('#login');
+    var loginagain = document.querySelector('#login2');
+    var regagain = document.querySelector('#reg2');
+    var popup1 = document.getElementById('lpopup');
+    var popup2 = document.getElementById('rpopup');
+    var closeBtn = document.querySelector('#lclose');
+    var closeBtn2 = document.querySelector('#rclose');
+
+    popupBtn1.addEventListener('click', function() {
+        popup1.style.display = 'flex';
+        // login
+    });
+    popupBtn2.addEventListener('click', function() {
+        popup2.style.display = 'flex';
+        // register
+    });
+
+    closeBtn.addEventListener('click', function() {
+        popup1.style.display = 'none';
+        // window.refresh();
+    });
+    closeBtn2.addEventListener('click', function() {
+        popup2.style.display = 'none';
+        // window.refresh();
+    });
+    loginagain.addEventListener('click',function(e){
+        e.preventDefault();
+        // form.reset();
+        popup2.style.display = 'none';
+        popup1.style.display = 'flex';
+    });
+    regagain.addEventListener('click',function(e){
+        e.preventDefault();
+        // form.reset();
+        popup1.style.display = 'none';
+        popup2.style.display = 'flex';
+    });
+   
+});
+// popup end
+
+
+
+
+// for reg page
+function f1(){
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let pass=document.getElementById("pwd").value;
+    let repass=document.getElementById("cpwd").value;
+
+    if(name!=0&&email!=0){
+
+        if(pass==repass && pass!=0){
+            let form=document.querySelector('#myform1');
+            form.action = '#';
+            form.submit();
+        }
+        else{
+            if(pass==0){
+                document.getElementById("warn").innerHTML="<p>*password should not be empty</p>";
+            }
+            else{
+                document.getElementById("warn").innerHTML="<p style=color: red>*password don't match</p>";
+            }
+        }
+
+    }
+    else{
+        document.getElementById("warn").innerHTML="<p style=color: red>*Name and Email fields should not be empty</p>";
+    }
+}
+
+// for login verfiy
+function f2(){
+    let name=document.getElementById("name2").value;
+    let pass=document.getElementById("pwd2").value;
+
+
+    if(name!=0 && pass!=0){
+        let form=document.querySelector('#myform2');
+        form.action = '#';
+        form.submit();
+    }
+    else{
+        if(pass==0){
+            document.getElementById("warn2").innerHTML="<p>*password should not be empty</p>";
+        }
+        if(name==0){
+            document.getElementById("warn2").innerHTML="<p>*name should not be empty</p>";
+        }
+    }
+}
+
+
+// to show password
+function show(){
+    var c=document.getElementById("pwd");
+    var c2=document.getElementById("cpwd");
+    if(c.type==="password"){
+        c.type="text";
+        if(c2!=0){
+            c2.type="text";
+        }
+    }
+    else{
+
+        c.type="password";
+        if(c2!=0){
+            c2.type="password";
+        }
+    }
+}
+
+// to show password for login form
+function show2(){
+    var c=document.getElementById("pwd2");
+    if(c.type==="password"){
+        c.type="text";
+    }
+    else{
+        c.type="password";
+    }
+}
+//to refresh page
+function refresh(){
+    location.reload(true);
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  let contactus=document.querySelector("#contactus");
+  let cpopup=document.querySelector('#cpopup');
+  var closeBtn = document.querySelector('.cclose');
+  // cpopup.style.display = 'flex';
+  
+  
+  contactus.addEventListener('click', function() {
+      cpopup.style.display = 'flex';
+      // login
+  });
+  
+  
+  closeBtn.addEventListener('click', function() {
+      cpopup.style.display = 'none';
+      // window.refresh();
+  });
+});
+
+
+
+
+// warning popup
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log("DOM fully loaded and parsed");
+//     let btn = document.querySelector('.apply0');
+//     let wpopup = document.querySelector('#wpopup');
+//     let wclose = document.querySelector('.wclose');
+//     // let container = document.querySelector('#con1');
+  
+//     btn.addEventListener('click', function() {
+//         console.log("Button clicked");
+//         wpopup.style.display='flex';
+//     });
+//     wclose.addEventListener('click',function(){
+//         wpopup.style.display='none';
+//         window.refresh();
+
+//     });
+// });
+
+// OR
+
+function warn(){
+    let wpopup = document.querySelector('#wpopup');
+    let wclose = document.querySelector('.wclose');
+    // console.log("Button clicked");
+    wpopup.style.display='flex';
+    wclose.addEventListener('click',function(){
+        wpopup.style.display='none';
+        // window.refresh();
+
+    });
+
+}
+
+
+// invalid user details
+
+  </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -44,18 +239,26 @@
 }
 
 body {
+  color: #e0e0e0;
   height: 100vh;
   display: flex;
   justify-content: center;
   /* background-image: url("../images/5172658.jpg"); */
   /* background-image: url("../images/1-sports-car-futuristic.jpg"); */
   /* background-image: url("./images/simon-berger-twukN12EN7c-unsplash.jpg"); */
-  background-image: url("../images/2-sea-full-moon.jpg");
+  /* background-image: url("../images/2-sea-full-moon.jpg");
   background-image: url("../images/nasa-Q1p7bh3SHj8-unsplash.jpg");
   background-image: url("../images/codioful-formerly-gradienta-l7pbhh64CIk-unsplash.jpg");
-  background-image: url("./images/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg");
   background-image: url("./images/images\ \(1\).jpg");
   background-image: url("./images/aqua-d9b59c89.png");
+  background-image: url("./images/background_1.jpg");
+  background-image: url("./images/maxresdefault.jpg");
+  background-image: url("./images/illustrationjpg.jpg"); */
+  /* background-image: url("./images_2/wallpaperflare.com_wallpaper6.jpg"); */
+  background-image: url("./images_2/wallpaperflare.com_wallpaper7.jpg");
+  background-image: url("./images_2/wallpaperflare.com_wallpaper10.jpg");
+  background-image: url("./images_2/wallpaperflare.com_wallpaper8.jpg");
+  background-image: url("https://www.dropbox.com/scl/fi/g260euaivezjyxpaw20ze/wallpaperflare.com_wallpaper8.jpg?rlkey=z7rx7oa3bseidiw6495tgqh90&st=t3yfbtf4&dl=1");
   /* background: #ffff;
   background: #363535;
   background: grey; */
@@ -85,6 +288,7 @@ body.dark-mode .nav a:hover {
 
 /* nav bar css */
 .nav {
+  color: black;
   padding-top: 0;
   z-index: 4;
   display: flex;
@@ -97,7 +301,16 @@ body.dark-mode .nav a:hover {
   padding: 8px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  background: rgba(254, 212, 44, 0.3);
+  /* color: darkblue; */
+  
+  /* background: rgba(254, 212, 44, 0.3); */
+  /* background: linear-gradient(to right, orange 50%, #f74b07); */
+  background: linear-gradient(to right, #fb5754 40%, #fcae4d);
+  background: linear-gradient(to right, #fcae4d, #fb5754 );
+  background: linear-gradient(to right, #fcad4dcc, #fb5754cc );
+
+  /* background: linear-gradient(to right, #0D1D3C 50%, #1b1f42); */
+  /* background: linear-gradient(135deg,orange 40%,#ff0331 ); */
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -119,14 +332,16 @@ body.dark-mode .nav a:hover {
   position: relative;
   color: black;
   font-size: 20px;
+  /* font-size: 25px; */
   font-weight: 600;
   padding: 6px 0;
   text-decoration: none;
   cursor: pointer;
+  font-weight: 900;
 }
 
 .nav a:hover {
-  color: #ff4d00;
+  color: #ffff;
 }
 /* end of nav bar css */
 
@@ -206,7 +421,7 @@ img {
 }
 
 .btnnew:hover {
-  color: #ff4d00;
+  color: #ffff;
 }
 
 
@@ -258,12 +473,14 @@ img {
   /* height: 440px; */
   border: 2px black solid;
   background: rgba(0, 183, 255, 0.559);
-  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.14);
+  background: linear-gradient(to right, #fcad4db0, #fb5754b0 );
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.048);
   border-radius: 20px;
-  backdrop-filter: blur(20px);
-  z-index: 2;
+  backdrop-filter: blur(10px);
+  z-index: 100;
   padding: 40px;
   overflow: hidden;
+  color: #0D1D3C;
 }
 .formpage h2{
   font-size: 2em;
@@ -420,29 +637,7 @@ label {
 
 
 /* job portals */
-/* .jobportals{
-  display: flex;
-  width: 100vw;
-  height: 100vh;
 
-  background: #f8f9fa;
-  backdrop-filter: blur(2px);
-} */
-/* #job1{
-  display: flex;
-  background: #ffffff;
-  width: 500px;
-  height: 200px;
-  margin: auto;
-  justify-content: center;
-  border-radius: 20px;
-  padding: 20px;
-  z-index: 2;
-  box-shadow:  0 8px 8px 0 rgba(0, 0, 0, 0.05);
-} */
-
-
-/* by chatgpt */
 
 .jobportals{
   margin:0 ;
@@ -451,17 +646,37 @@ label {
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  background: rgba(229, 228, 223, 0.3);
+  background: rgba(229, 228, 223, 0.05);
   /* background: #282c2d4d; */
   border-radius: 12px;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(2px); */
   z-index: 4;
 }
 .jobportals h1{
+  color: rgba(255, 255, 255, 0.847);
+  /* background: linear-gradient(to right, orange 50%, #f74b07); */
+  /* background: linear-gradient(to right bottom, #34d3ef 50%, #0274d2 ); */
+  background: linear-gradient(to right, #0D1D3C 50%, #1b1f42);
+  background: linear-gradient(to right, #fb5754 20%, #fcae4d);
+  background: linear-gradient(to right, #0d1d3c85 50%, #1b1f42ad);
+
+  /* color: purple; */
+  /* color: #7402a1; */
+  /* color: black; */
+  color: burlywood;
+  color: #e0e0e0;
+  /* color: #fda438; */
+
+  /* color: blue; */
+  width: 200px;
   display: flex;
   justify-content: center;
+  margin: auto;
+  border-radius: 5px;
 }
 .job-post {
+  color: burlywood;
+
   /* border: 1px solid #ddd; */
   padding: 15px;
   margin-bottom: 20px;
@@ -469,14 +684,17 @@ label {
   /* background: rgba(254, 212, 44, 0.3); */
   /* background: #856b014d; */
   /* background: #ffffffb5; */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 5px 10px rgba(0, 0.2, 0, 0.2); */
+  box-shadow:  5px 5px rgba(0, 0, 0, 0.2);
 
   border-radius: 12px;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
 
 }
 .job-post h2 {
   margin-top: 0;
+  color: darksalmon;
+  color:beige
 }
 .job-post p {
   margin: 5px 0;
@@ -485,13 +703,16 @@ label {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #0073e6;
-  color: #fff;
+  background-color: #fb5754;
+  background-color: #fda438;
+  
+  color: #ffff;
   text-decoration: none;
   border-radius: 5px;
 }
 .job-post a:hover {
-  background-color: #005bb5;
+  background-color: #fcae4d;
+  background-color: #fb5754;
 }
 
 
@@ -499,199 +720,6 @@ label {
 
 
   </style>
-    <script>
-      // popup js
-document.addEventListener("DOMContentLoaded", function() {
-    var popupBtn2 = document.querySelector('#reg');
-    var popupBtn1 = document.querySelector('#login');
-    var loginagain = document.querySelector('#login2');
-    var regagain = document.querySelector('#reg2');
-    var popup1 = document.getElementById('lpopup');
-    var popup2 = document.getElementById('rpopup');
-    var closeBtn = document.querySelector('#lclose');
-    var closeBtn2 = document.querySelector('#rclose');
-
-    popupBtn1.addEventListener('click', function() {
-        popup1.style.display = 'flex';
-        // login
-    });
-    popupBtn2.addEventListener('click', function() {
-        popup2.style.display = 'flex';
-        // register
-    });
-
-    closeBtn.addEventListener('click', function() {
-        popup1.style.display = 'none';
-        window.refresh();
-    });
-    closeBtn2.addEventListener('click', function() {
-        popup2.style.display = 'none';
-        window.refresh();
-    });
-    loginagain.addEventListener('click',function(e){
-        e.preventDefault();
-        // form.reset();
-        popup2.style.display = 'none';
-        popup1.style.display = 'flex';
-    });
-    regagain.addEventListener('click',function(e){
-        e.preventDefault();
-        // form.reset();
-        popup1.style.display = 'none';
-        popup2.style.display = 'flex';
-    });
-   
-});
-// popup end
-
-
-
-
-// for reg page
-function f1(){
-    let name=document.getElementById("name").value;
-    let email=document.getElementById("email").value;
-    let pass=document.getElementById("pwd").value;
-    let repass=document.getElementById("cpwd").value;
-
-    if(name!=0&&email!=0){
-
-        if(pass==repass && pass!=0){
-            let form=document.querySelector('#myform1');
-            form.action = 'reg.jsp';
-            form.submit();
-        }
-        else{
-            if(pass==0){
-                document.getElementById("warn").innerHTML="<p>*password should not be empty</p>";
-            }
-            else{
-                document.getElementById("warn").innerHTML="<p style=color: red>*password don't match</p>";
-            }
-        }
-
-    }
-    else{
-        document.getElementById("warn").innerHTML="<p style=color: red>*Name and Email fields should not be empty</p>";
-    }
-}
-
-// for login verfiy
-function f2(){
-    let name=document.getElementById("name2").value;
-    let pass=document.getElementById("pwd2").value;
-
-
-    if(name!=0 && pass!=0){
-        let form=document.querySelector('#myform2');
-        form.action = 'login.jsp';
-        form.submit();
-    }
-    else{
-        if(pass==0){
-            document.getElementById("warn2").innerHTML="<p>*password should not be empty</p>";
-        }
-        if(name==0){
-            document.getElementById("warn2").innerHTML="<p>*name should not be empty</p>";
-        }
-    }
-}
-
-
-// to show password
-function show(){
-    var c=document.getElementById("pwd");
-    var c2=document.getElementById("cpwd");
-    if(c.type==="password"){
-        c.type="text";
-        if(c2!=0){
-            c2.type="text";
-        }
-    }
-    else{
-
-        c.type="password";
-        if(c2!=0){
-            c2.type="password";
-        }
-    }
-}
-
-// to show password for login form
-function show2(){
-    var c=document.getElementById("pwd2");
-    if(c.type==="password"){
-        c.type="text";
-    }
-    else{
-        c.type="password";
-    }
-}
-//to refresh page
-function refresh(){
-    location.reload(true);
-}
-
-
-
-
-let contactus=document.querySelector("#contact2");
-let cpopup=document.querySelector('#cpopup');
-var closeBtn = document.querySelector('.cclose');
-// cpopup.style.display = 'flex';
-
-
-contactus.addEventListener('click', function() {
-    cpopup.style.display = 'flex';
-    // login
-});
-
-
-closeBtn.addEventListener('click', function() {
-    cpopup.style.display = 'none';
-    window.refresh();
-});
-
-
-
-
-// warning popup
-// document.addEventListener('DOMContentLoaded', function() {
-//     console.log("DOM fully loaded and parsed");
-//     let btn = document.querySelector('.apply0');
-//     let wpopup = document.querySelector('#wpopup');
-//     let wclose = document.querySelector('.wclose');
-//     // let container = document.querySelector('#con1');
-  
-//     btn.addEventListener('click', function() {
-//         console.log("Button clicked");
-//         wpopup.style.display='flex';
-//     });
-//     wclose.addEventListener('click',function(){
-//         wpopup.style.display='none';
-//         window.refresh();
-
-//     });
-// });
-
-// OR
-function warn(){
-    let wpopup = document.querySelector('#wpopup');
-    let wclose = document.querySelector('.wclose');
-    console.log("Button clicked");
-    wpopup.style.display='flex';
-    wclose.addEventListener('click',function(){
-        wpopup.style.display='none';
-        window.refresh();
-
-    });
-
-}
-
-
-// invalid user details
-
-    </script>
   </head>
   <body>
     <!-- <script src="./script.js"></script> -->
@@ -699,38 +727,21 @@ function warn(){
     <div class="main">
       <!-- nav bar start -->
       <div class="nav">
-        <img src="./images/img1.png" alt="" />
+        <!-- <img src="./images/img1.png" alt="" /> -->
+        <img src="https://www.dropbox.com/scl/fi/azjjjyooehb8maounm6bm/img1.png?rlkey=w5s6cneppvqpkssk8jnllg218&st=6qeyxa48&dl=1" alt="image" />
        
         <a style="cursor: pointer;" id="login">Login</a>
         <h4 style="cursor: pointer;" id="0">/</h4>
-        <a style="cursor: pointer;" id="reg">Register</a>
+        <a style="cursor: pointer;" id="reg">SignUp</a>
         
-        <a href="#" id="contact2">Contact Us</a>
+        <a id="contactus">Contact Us</a>
       </div>
       <!-- nav bar end -->
 
-      <!-- new card btn -->
-      
-      <!-- <button id="btnone1" class="btnnew" type="button">+&nbsp;&nbsp;New Card</button> -->
-      <!-- <button id="btnone1" class="btnnew" type="button">Apply for a Job</button> -->
      
       <div class="container" id="con1">
         
-        <!-- <div id="card1" class="cards">
-          <div class="content">
-            <a href="./images/img1.png">
-              <div class="img">
-                <img src="./images/img1.png" alt="image" />
-              </div>
-            </a>
-            <h2>01</h2>
-            <h3>Card One</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-              non aspernatur ipsum sint repudiandae ex.
-            </p>
-          </div>
-        </div> -->
+       
         
       </div>
       <!-- cards div end -->
@@ -940,7 +951,7 @@ function warn(){
     </div>
 
 
-    <script src="myscript.js"></script>
+    <!-- <script src="myscript.js"></script> -->
 
   </body>
 </html>
